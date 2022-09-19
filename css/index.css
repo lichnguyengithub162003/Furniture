@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Open+Sans:wght@400;600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&family=Quicksand:wght@400;600&family=Roboto:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Open+Sans:wght@400;600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&family=Quicksand:wght@400;600&family=Roboto:wght@100;400&display=swap');
+
+:root {
+    --red-pink: #e91e63;
+}
 
 * {
     margin: 0;
@@ -6,68 +10,31 @@
     box-sizing: border-box;
 }
 
+
+/****************** Controls the scrollbar **********************/
+
+body::-webkit-scrollbar {
+    width: 0.1px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
 html {
-    scroll-behavior: smooth;
-}
-body {
-    background: #000;
-    min-height: 200vh;
+    overflow-y: scroll;
+    scrollbar-color: #808080;
+    scrollbar-width: 800px;
 }
 
 
-
-/* -------------------- HEADER ----------------- */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: 0.6s;
-    padding: 40px 100px;
-    z-index: 1000;
-    font-family: 'Poppins', sans-serif;
-}
-header.sticky {
-    padding: 5px 100px;
-    background: #fff;
-}
-header.sticky .logo, 
-header.sticky ul li a {
-    color: #000;
-}
-header .logo {
-    position: relative;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    font-style: 2em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.6s;
-}
-header ul {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-header ul li {
-    position: relative;
-    list-style: none;
-}
-header ul li a {
-    position: relative;
-    margin: 0 15px;
-    text-decoration: none;
-    color: #fff;
-    letter-spacing: 2px;
-    font-weight: 500px;
-    transition: 0.6s;
-}
-
+/* --------------- Banner ------------------- */
 .banner {
     position: relative;
     width: 100%;
@@ -75,30 +42,393 @@ header ul li a {
     background: url(../img/black.png);
     background-size: cover;
 }
-
-
-
-
-/* -------------------- SCROLL TOP ------------- */
-#scroll {
-    position: fixed;
-    bottom: 40px;
-    right: 30px;
-    height: 50px;
-    width: 50px;
-    display: none;
-    place-items: center;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    font-size: 25px;
+a {
+    text-decoration: none;
 }
-#scroll-value {
-    display: block;
-    height: calc(100% - 10px);
-    width: calc(100% - 10px);
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
+
+
+
+/* --------------- Slide product ----------------- */
+.slide-product {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.slide-box {
+    width: 25%;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid red;
+}
+.slide-img {
+    height: 300px;
+    position: relative;
+}
+.slide-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+}
+.detail-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-family: calibri;
+}
+.type {
+    display: flex;
+    flex-direction: column;
+}
+.type a {
+    color: #222;
+    margin: 5px 0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding-right: 8px;
+}
+.type span {
+    color: rgba(26,26,26,0.5);
+}
+.price {
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: poppins;
+    letter-spacing: 0.5px;
+}
+.overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);  /* K để thì nó ở giữa slide-box
+                                          Để thì giữa slide-img */
+    width: 100%;
+    height: 100%;
+    background: rgba(92,95,236,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;  /*Ẩn*/
+}
+.slide-img:hover .overlay {
+    visibility: visible;
+    animation: fade 0.5s;
+}
+.buy-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #fff;
+    color: #252525;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: calibri;
+    border-radius: 50%;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
 }
+.buy-btn:hover {
+    color: #fff;
+    background: #f15fa3;
+    transition: all ease 0.3s;
+}
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+
+
+/* -------------- Giới thiệu chung ------------- */
+.content1 {
+    max-width: 100%;
+    padding: 60px 80px;
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    /* border: 1px solid red; */
+    font-family: 'DM Sans', sans-serif;
+    background: rgb(241, 241, 241);
+    margin: 20px 0;
+}
+
+/* Left */
+.content1-left {
+    width: 50%;
+}
+.content1-left h4 {
+    color: var(--red-pink); 
+    margin-bottom: 10px;
+}
+.content1-left h1 {
+    font-size: 53px;
+    font-style: normal;
+    font-weight: 700;
+    color: #222;
+    line-height: 66px;
+}
+
+
+/* Right */
+.content1-right {
+    width: 50%;
+    margin-top: 35px;
+}
+.content1-right p {
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    color: #666666;
+}
+.content1-right a {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 80px;
+    color: #868080;
+    position: relative;
+    padding: 10px 0;
+}
+.content1-right a::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    transform: scaleX(0); /* Thu nhỏ về 0 */
+    background: var(--red-pink);
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+.content1-right a:hover {
+    color: var(--red-pink);
+    transition: all 0.3s ease;
+}
+.content1-right a:hover::after {
+    transform:  scaleX(1);
+}
+
+
+/* ------------- Image indoor -------------- */
+.indoor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    padding: 0;
+}
+.indoor-img {
+    width: 80%;
+}
+.indoor img {
+    width: 100%;
+    border-radius: 1%;
+}
+
+
+/* -------------- Indoor content --------------- */
+.content2 {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    border: 1px solid green;
+    margin: 20px 0;
+    padding: 50px 80px;
+    font-family: 'DM Sans', sans-serif;
+}
+/* Left */
+.content2-left {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid pink;
+}
+.content2-right-img {
+    position: relative;
+}
+.content2-right-img img {
+    border-radius: 2%;
+    border: 7px solid #fff;
+}
+.content2-right-img img:first-child {
+    width: 400px;
+    margin-left: -200px;
+}
+.content2-right-img img:last-child {
+    width: 400px;
+    position: absolute;
+    top: 30%;
+    left: 0%;
+}
+
+/* Right */
+.content2-right {
+    width: 40%;
+}
+.content2-right h1 {
+    font-size: 53px;
+    font-style: normal;
+    font-weight: 700;
+    color: #222;
+    line-height: 66px;
+    margin-bottom: 10px;
+}
+.content2-right p {
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    color: #666666;
+}
+
+/* ------------- Indoor option ------------ */
+.option-indoor {
+    width: 100%;
+    border: 2px solid rgb(51, 166, 215);
+}
+.option-indoor .option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.option-indoor .option-img {
+    width: 29%;
+    height: 80%;
+    margin: 13px;
+}
+.option-indoor img {
+    width: 100%;
+    height: 480px;
+    border-radius: 1%;
+}
+
+
+
+/* ========================================= */
+
+/* ------------ Image outdoor -------------- */
+.outdoor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    padding: 0;
+    margin: 20px 0;
+}
+.outdoor-img {
+    width: 80%;
+}
+.outdoor img {
+    width: 100%;
+    border-radius: 1%;
+}
+
+
+
+/* ------------ Outdoor content ------------ */
+.content3 {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    /* border: 1px solid green; */
+    margin: 20px 0;
+    padding: 50px 80px;
+    font-family: 'DM Sans', sans-serif;
+    overflow: hidden;  /*  _____ */
+}
+/* Left */
+.content3-left {
+    width: 45%;
+}
+.content3-left h1 {
+    font-size: 53px;
+    font-style: normal;
+    font-weight: 700;
+    color: #222;
+    line-height: 66px;
+    margin-bottom: 10px;
+}
+.content3-left p {
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    color: #666666;
+}
+
+/* Right */
+.content3-right {
+    width: 50%;
+    height: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid pink; */
+}
+.content3-right-img {
+    width: 100%;
+    height: 700px;
+    position: relative;
+}
+.content3-right img {
+    width: 100%;
+    border-radius: 5%;
+    border: 7px solid #fff;
+}
+.content3-right img:first-child {
+    width: 400px;
+    position: relative;
+    margin-left: 150px;
+}
+.content3-right img:last-child {
+    width: 330px;
+    height: 330px;
+    position: absolute;
+    bottom: 30px;
+    left: 70px;
+    border-radius: 50%;
+}
+
+
+
+/* ------------- Outdoor option ------------ */
+.option-outdoor {
+    width: 100%;
+    border: 2px solid rgb(51, 166, 215);
+}
+.option-outdoor .option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.option-outdoor .option-img {
+    width: 29%;
+    height: 80%;
+    margin: 13px;
+}
+.option-outdoor img {
+    width: 100%;
+    height: 480px;
+    border-radius: 1%;
+}
+
+
+
+
+/* -------------------- Architecture Quotes -------------------*/

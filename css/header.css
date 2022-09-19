@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Open+Sans:wght@400;600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&family=Quicksand:wght@400;600&family=Roboto:wght@100;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ------------------ Scroll top -------------- */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    /* background: #dedede; */
+    /* background: #000; */
+}
+
+
+/* -------------------- HEADER ----------------- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 100px;
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
+}
+header.sticky {
+    padding: 5px 100px;
+    background: #fff;
+}
+header.sticky .logo, 
+header.sticky ul li a,
+header.sticky ul li #search-box #search-text,
+header.sticky ul li #search-box #search-btn {
+    color: #000;
+}
+header .logo,
+footer .logo {
+    position: relative;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    font-style: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+    font-size: 25px;
+}
+header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul li {
+    position: relative;
+    list-style: none;
+}
+header ul li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 500px;
+    transition: 0.6s;
+}
+header .others {
+    margin-right: -50px;
+}
+header ul li #search-box {
+    background: none;
+    display: flex;
+    flex-direction: row;
+}
+header ul li #search-box #search-text {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 15px;
+    color: #fff;
+    width: 0;
+    transition: all 0.25s ease-in-out;
+}
+header ul li #search-box:hover{
+    border-bottom: 2px solid #ccc;
+}
+header ul li #search-box:hover #search-text,
+header ul li #search-box #search-text:valid {
+    width: 200px;
+    padding: 7px 0 7px 10px;
+}
+header ul li #search-box #search-btn {
+    background: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.sub-menu {
+    position: absolute;
+    border: 1px solid #ccc;
+    padding: 5px 0;
+    visibility: hidden;
+    top: 50px;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+header ul li:hover .sub-menu {
+    visibility: visible;
+    top: 30px;
+}
+
+
+
+
+/* -------------------- SCROLL TOP ------------- */
+#scroll {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    height: 50px;
+    width: 50px;
+    display: none;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 25px;
+    z-index: 1000;
+}
+#scroll-value {
+    display: block;
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #fff;
+}

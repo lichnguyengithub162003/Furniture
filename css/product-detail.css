@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Open+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root {
+    --red-pink: #e91e63;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/****************** Controls the scrollbar **********************/
+
+body::-webkit-scrollbar {
+    width: 0.1px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+html {
+    overflow-y: scroll;
+    scrollbar-color: #808080;
+    scrollbar-width: 800px;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+}
+
+
+/* --------------- Banner ------------------- */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 20vh;
+    /* background: url(../img/living\ room12.jpg); */
+    background: #000;
+    background-size: cover;
+}
+
+
+
+/* ------------------- Location for nav ------------------- */
+.location {
+    width: 100%;
+    padding: 20px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 25px;
+}
+.location .home {
+    color: #a9a59c;
+}
+.location i {
+    margin: 0 5px;
+    font-weight: 600;
+    color: #c5c3bb;
+}
+.location .item {
+    color: #c5c3bb;
+    font-weight: 500;
+}
+
+
+
+/* -------------- Product Detail ----------------- */
+.product-detail {
+    width: 100%;
+    /* border: 3px red solid; */
+    display: flex;
+}
+
+/* Left */
+.product-detail-left {
+    width: 50%;
+    /* border: 1px rgb(255, 183, 0) solid; */
+}
+.product-detail-left > img {
+    width: 100%;
+}
+.small-img-group {
+    width: 100%;
+    display: flex;
+}
+.small-img-col {
+    margin: 5px;
+    cursor: pointer;
+}
+
+/* Right */
+.product-detail-right {
+    width: 50%;
+    /* border: 1px rgb(55, 255, 0) solid; */
+    padding: 30px 60px;
+}
+
+/* Cartegory */
+.category {
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 650;
+    margin-bottom: 10px;
+}
+
+/* Product name */
+.product-name {
+    text-transform: uppercase;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+/* Product desc */
+.product-desc {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 27px;
+}
+
+/* Price */
+.price {
+    /* border: 1px solid red; */
+    font-size: 23px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+.price span {
+    text-decoration: line-through;
+    color: var(--red-pink);
+    font-weight: 200;
+    margin-right: 20px;
+}
+
+/* Color */
+.color {
+    /* border: 1px solid royalblue; */
+    display: flex;
+    margin-bottom: 20px;
+}
+.color .color-desc {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin-right: 5px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: all 0.3s;
+}
+.color .color-desc:hover {
+    transform: scale(1.2, 1.2);
+    /* border: 2px solid #ccc; */
+}
+.color .color-desc:first-child {
+    background: #000;
+}
+.color .color-desc:nth-child(2){
+    background: red;
+}
+.color .color-desc:last-child {
+    background: green;
+}
+
+/* Amounts */
+.amounts {
+    display: flex;
+    align-items: center;
+    /* border: 1px solid red; */
+    margin: 0;
+    margin-bottom: 20px;
+}
+.amounts label {
+    /* border: 1px solid red; */
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.amount {
+    border: 2px solid rgba(72, 72, 72, 0.2);
+    border-radius: 40px;
+    width: 80px;
+    height: 50px;
+    position: relative;
+    transition: 0.5s;
+}
+.amount:hover {
+    width: 120px;
+    border: 2px solid rgb(6, 6, 6);
+}
+.amount .next {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    z-index: 1;
+    cursor: pointer;
+    transform: translateY(-50%) rotate(135deg);
+    opacity: 0;
+    transition: 0.5s;
+}
+.amount:hover .next {
+    opacity: 1;
+    right: 20px;
+}
+.amount .prev {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    z-index: 1;
+    cursor: pointer;
+    transform: translateY(-50%) rotate(315deg);
+    opacity: 0;
+    transition: 0.5s;
+}
+.amount:hover .prev {
+    opacity: 1;
+    left: 20px;
+}
+#box span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 46px;
+    color: #111;
+    font-size: 24px;
+    font-weight: 700;
+    user-select: none;
+    display: none; 
+}
+#box span:nth-child(1) {
+    display: initial;
+}
+
+
+/* Button */
+.button {
+    /* border: 1px solid greenyellow; */
+    margin-bottom: 20px;
+    font-size: 16px;
+    /* border: 1px solid red; */
+}
+.button button {
+    cursor: pointer;
+    transition: all 0.4s;
+}
+.button .buy-now {
+    width: 100px;
+    height: 100%;
+    padding: 12px;
+    border-radius: 2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: #222;
+    color: #fff;
+    border: none;
+    outline: none;
+    margin-right: 10px;
+}
+.button .buy-now:hover {
+    background: #fff;
+    color: #000;
+    border: #000 2px solid;
+    font-size: 16px;
+}
+.button .addtocart {
+    width: 120px;
+    height: 100%;
+    padding: 12px;
+    border-radius: 2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--red-pink);
+    color: #fff;
+    border: none;
+    outline: none;
+}
+.button .addtocart:hover {
+    background: #fff;
+    color: var(--red-pink);
+    border: var(--red-pink) 2px solid;
+}
+
+/* Dimension & Weight */
+.detail {
+    display: flex;
+    flex-direction: column;
+    line-height: 28px;
+}
+.detail h2 {
+    margin-bottom: 10px;
+}
+
+
+
+
+
+/* ------------------------ Product detail 2 --------------------- */
+.detail-title {
+    width: 100%;
+    padding: 50px 20px;
+    border: 1px solid red;
+    margin: 20px 0;
+}
+
+
+
+
+
+/* --------------------- Rating ----------------------- */
+.rate {
+    width: 100%;
+    padding: 50px 20px;
+    border: 1px solid rgb(60, 177, 31);
+    margin: 20px 0;
+}
+
+
+
+
+
+/* ------------------- You might also like ------------------- */
+.another {
+    width: 100%;
+    padding: 50px 20px;
+    border: 1px solid rgb(103, 105, 237);
+    margin: 20px 0;
+}
